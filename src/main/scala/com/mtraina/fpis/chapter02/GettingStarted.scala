@@ -2,7 +2,7 @@ package com.mtraina.fpis.chapter02
 
 import scala.annotation.tailrec
 
-class Ex2_1 {
+object GettingStarted {
 
   def fib(n: Int): Int = {
     @tailrec
