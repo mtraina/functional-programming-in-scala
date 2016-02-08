@@ -5,7 +5,7 @@ import scala.annotation.tailrec
 object GettingStarted {
 
   def factorial(n: Int): Int = {
-
+    @tailrec
     def go(n: Int, acc: Int): Int = {
       if(n <= 0) acc
       else go(n-1, n * acc)
@@ -13,6 +13,11 @@ object GettingStarted {
     go(n, 1)
   }
 
+  /**
+    * Exercise 2.1
+    * @param n
+    * @return
+    */
   def fib(n: Int): Int = {
     @tailrec
     def go(n: Int, acc: Int, sum: Int): Int = {
@@ -27,6 +32,7 @@ object GettingStarted {
     msg.format(n, f(n))
   }
 
+  // monomorphic function
   def findFirst(ss: Array[String], key: String): Int = {
     @tailrec
     def loop(n: Int): Int = {
@@ -38,4 +44,15 @@ object GettingStarted {
     loop(0)
   }
 
+  // polymorphic function
+  def findFirst[A](ss: Array[A], p: A => Boolean): Int = {
+    @tailrec
+    def loop(n: Int): Int = {
+      if(n >= ss.length) -1
+      else if(p(ss(n))) n
+      else loop(n + 1)
+    }
+
+    loop(0)
+  }
 }

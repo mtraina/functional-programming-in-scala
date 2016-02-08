@@ -48,4 +48,10 @@ class GettingStartedSpec extends FlatSpec with Matchers {
     findFirst(Array("a", "b", "c"), "c") should be (2)
     findFirst(Array("a", "b", "c"), "d") should be (-1)
   }
+
+  "It" should "return the first element of the collection using a polymorphic approach" in {
+    findFirst(Array(0, 1, 2, 3), (n: Int) => n == 1) should be (1)
+    findFirst(Array(0.1f, 1.2f, 2.3f, 3.4f), (f: Float) => f == 3.4f) should be (3)
+    findFirst(Array(0.1, 1.2, 2.3, 3.4), (d: Double) => d == 3.4) should be (3)
+  }
 }
