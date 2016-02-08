@@ -54,4 +54,9 @@ class GettingStartedSpec extends FlatSpec with Matchers {
     findFirst(Array(0.1f, 1.2f, 2.3f, 3.4f), (f: Float) => f == 3.4f) should be (3)
     findFirst(Array(0.1, 1.2, 2.3, 3.4), (d: Double) => d == 3.4) should be (3)
   }
+
+  "It" should "check if a polymorphic array is sorted according to a given comparison function" in {
+    isSorted(Array.empty[String], (s: String, t: String) => s < t) shouldBe true
+    isSorted(Array("alpha", "beta", "gamma"), (s: String, t: String) => s < t) shouldBe true
+  }
 }
