@@ -42,4 +42,10 @@ class GettingStartedSpec extends FlatSpec with Matchers {
 
     formatResult("Fibonacci of %d is %d", 5, fib) should be ("Fibonacci of 5 is 5")
   }
+
+  "It" should "return the first element of the collection" in {
+    findFirst(Array("a", "b", "c"), "a") should be (0)
+    findFirst(Array("a", "b", "c"), "c") should be (2)
+    findFirst(Array("a", "b", "c"), "d") should be (-1)
+  }
 }
