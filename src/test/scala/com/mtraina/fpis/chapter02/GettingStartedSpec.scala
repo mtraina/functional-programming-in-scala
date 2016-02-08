@@ -36,4 +36,10 @@ class GettingStartedSpec extends FlatSpec with Matchers {
       fib(n) should be (r)
     }
   }
+
+  "Format result" should "return a formatted string" in {
+    formatResult("the factorial of %d is %d", 3, factorial) should be ("the factorial of 3 is 6")
+
+    formatResult("Fibonacci of %d is %d", 5, fib) should be ("Fibonacci of 5 is 5")
+  }
 }

@@ -23,4 +23,8 @@ object GettingStarted {
     go(n, 0, 1)
   }
 
+  def formatResult(msg: String, n: Int, f: Int => Int): String = {
+    msg.format(n, f(n))
+  }
+
 }
