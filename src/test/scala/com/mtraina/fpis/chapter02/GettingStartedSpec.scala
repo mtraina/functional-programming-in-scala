@@ -65,4 +65,11 @@ class GettingStartedSpec extends FlatSpec with Matchers {
     partialSum(2) shouldBe 3
     partialSum(-1) shouldBe 0
   }
+
+  "It" should "curry the function" in {
+    val curriedMul = curry((a: Int, b: Int) => a * b)
+    curriedMul(2)(3) shouldBe 6
+    curriedMul(1)(0) shouldBe 0
+    curriedMul(-1)(-2) shouldBe 2
+  }
 }
