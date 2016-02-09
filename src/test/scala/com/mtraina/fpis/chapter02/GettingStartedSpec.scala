@@ -58,4 +58,11 @@ class GettingStartedSpec extends FlatSpec with Matchers {
     isSorted(Array.empty[String], (s: String, t: String) => s < t) shouldBe true
     isSorted(Array("alpha", "beta", "gamma"), (s: String, t: String) => s < t) shouldBe true
   }
+
+  "It" should "apply a partial function" in {
+    val partialSum = partial1(1, (a: Int, b: Int) => a + b)
+    partialSum(0) shouldBe 1
+    partialSum(2) shouldBe 3
+    partialSum(-1) shouldBe 0
+  }
 }
