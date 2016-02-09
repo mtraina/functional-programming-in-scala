@@ -80,4 +80,11 @@ class GettingStartedSpec extends FlatSpec with Matchers {
     uncurriedSub(-2, 1) shouldBe -3
     uncurriedSub(3, 0) shouldBe 3
   }
+
+  "It" should "compose two functions" in {
+    val comp = compose((b: Int) => b + 1, (a: Int) => a + 2)
+    comp(2) shouldBe 5
+    comp(0) shouldBe 3
+    comp(-5) shouldBe -2
+  }
 }
