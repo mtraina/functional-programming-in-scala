@@ -72,4 +72,12 @@ class GettingStartedSpec extends FlatSpec with Matchers {
     curriedMul(1)(0) shouldBe 0
     curriedMul(-1)(-2) shouldBe 2
   }
+
+  "It" should "uncurry the function" in {
+    val curriedSub = curry((a: Int, b: Int) => a - b)
+    val uncurriedSub = uncurry(curriedSub)
+    uncurriedSub(2, 1) shouldBe 1
+    uncurriedSub(-2, 1) shouldBe -3
+    uncurriedSub(3, 0) shouldBe 3
+  }
 }
