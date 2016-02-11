@@ -37,7 +37,7 @@ object List {
   def tail[A](l: List[A]): List[A] = {
     l match {
       case Nil => Nil
-      case (Cons(h, t)) => t
+      case (Cons(_, t)) => t
     }
   }
 
@@ -49,5 +49,13 @@ object List {
       case Nil => Cons(head, Nil)
       case _ => Cons(head, l)
     }
+  }
+
+  /**
+    * Ex. 3.4
+    */
+  def drop[A](n: Int, l: List[A]): List[A] = {
+    if(n <= 0) l
+    else drop(n - 1, tail(l))
   }
 }

@@ -43,5 +43,18 @@ class ListSpec extends FlatSpec with Matchers {
     }
   }
 
+  /**
+    * Ex. 3.4
+    */
+  it should "drop n elements from the list" in {
+    val lists = Table(
+      ("n", "source", "target"),
+      (0, List(1,2,3), List(1,2,3)),
+      (1, Nil, Nil),
+      (1, List(1), Nil))
 
+    forAll(lists){(n: Int, s: List[Int], t: List[Int]) =>
+      drop(n, s) shouldBe t
+    }
+  }
 }
