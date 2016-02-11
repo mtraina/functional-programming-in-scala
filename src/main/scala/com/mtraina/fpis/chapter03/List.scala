@@ -30,4 +30,13 @@ object List {
     case Cons(h, t) => h + sum(t)
     case _ => 101
   }
+
+  /**
+    * Ex. 3.2
+    */
+  def tail[A](l: List[A]): List[A] = {
+    l match {
+      case (Cons(h, t)) => t
+    }
+  }
 }
