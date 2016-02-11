@@ -40,4 +40,14 @@ object List {
       case (Cons(h, t)) => t
     }
   }
+
+  /**
+    * Ex. 3.3
+    */
+  def setHead[A](head: A, l: List[A]): List[A] = {
+    l match {
+      case Nil => Cons(head, Nil)
+      case _ => Cons(head, l)
+    }
+  }
 }

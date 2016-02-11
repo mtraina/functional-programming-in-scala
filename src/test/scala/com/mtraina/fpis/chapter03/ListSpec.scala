@@ -21,4 +21,16 @@ class ListSpec extends FlatSpec with Matchers {
       tail(s) shouldBe t
     }
   }
+
+  it should "set a new head to the list" in {
+    val lists = Table(
+      ("source", "target"),
+      (List(1,2,3), List(0,1,2,3)),
+      (Nil, List(0)),
+      (List(1), List(0, 1)))
+
+    forAll(lists){(s: List[Int], t: List[Int]) =>
+      setHead(0, s) shouldBe t
+    }
+  }
 }
