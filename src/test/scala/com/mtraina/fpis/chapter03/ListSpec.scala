@@ -6,10 +6,16 @@ import org.scalatest.prop.TableDrivenPropertyChecks._
 
 class ListSpec extends FlatSpec with Matchers {
 
+  /**
+    * Ex. 3.1
+    */
   it should "check the pattern matching result on the static list" in {
     x shouldBe 3
   }
 
+  /**
+    * Ex. 3.2
+    */
   it should "return the tail of the list" in {
     val lists = Table(
       ("source", "target"),
@@ -22,6 +28,9 @@ class ListSpec extends FlatSpec with Matchers {
     }
   }
 
+  /**
+    * Ex. 3.3
+    */
   it should "set a new head to the list" in {
     val lists = Table(
       ("source", "target"),
@@ -33,4 +42,6 @@ class ListSpec extends FlatSpec with Matchers {
       setHead(0, s) shouldBe t
     }
   }
+
+
 }
