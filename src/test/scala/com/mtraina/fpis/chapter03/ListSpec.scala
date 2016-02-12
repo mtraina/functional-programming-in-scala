@@ -73,4 +73,19 @@ class ListSpec extends FlatSpec with Matchers {
       dropWhile(p, s) shouldBe t
     }
   }
+
+  /**
+    * Ex. 3.6
+    */
+  it should "dropping the last element of the list" in {
+    val lists = Table(
+      ("source", "target"),
+      (List(1,2,3), List(1,2)),
+      (Nil, Nil),
+      (List(1), Nil))
+
+    forAll(lists){(s: List[Int], t: List[Int]) =>
+      init(s) shouldBe t
+    }
+  }
 }
