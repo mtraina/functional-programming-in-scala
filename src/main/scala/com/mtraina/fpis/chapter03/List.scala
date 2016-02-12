@@ -63,14 +63,9 @@ object List {
     * Ex. 3.5
     */
   def dropWhile[A](p: A => Boolean, l: List[A]): List[A] = {
-
-    def inner(p: A => Boolean, l: List[A], r: List[A]): List[A] = {
-      r match {
-        case Nil => l
-        case Cons(h, t) => if(!p(h)) inner(p, Cons(h, l), t) else inner(p, l, t)
-      }
+    l match {
+      case Nil => l
+      case Cons(h,t) => if(!p(h)) Cons(h, dropWhile(p, t)) else dropWhile(p, t)
     }
-
-    inner(p, Nil, l)
   }
 }
