@@ -63,10 +63,13 @@ class ListSpec extends FlatSpec with Matchers {
     */
   it should "drop elements that match the predicate form the list" in {
     val lists = Table(
-      ("p", "source", "target"),
-      ((i: Int) => i % 2 == 0, List(1,2,3), List(1,3)))
+      ("desc", "p", "source", "target"),
+      ("drop all the even numbers", (i: Int) => i % 2 == 0, List(1,2,3), List(1,3)),
+      ("drop all the odd numbers", (i: Int) => i % 2 == 1, List(1,2,3), List(2)),
+      ("drop all the numbers that contains a 2", (i: Int) => i.toString.matches("2*"), List(1,2,3,11,22,33), List(1,3,11,33)))
 
-    forAll(lists){(p: Int => Boolean, s: List[Int], t: List[Int]) =>
+    forAll(lists){(d: String, p: Int => Boolean, s: List[Int], t: List[Int]) =>
+      println(d)
       dropWhile(p, s) shouldBe t
     }
   }
