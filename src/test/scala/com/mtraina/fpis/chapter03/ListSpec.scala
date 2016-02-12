@@ -57,4 +57,17 @@ class ListSpec extends FlatSpec with Matchers {
       drop(n, s) shouldBe t
     }
   }
+
+  /**
+    * Ex. 3.5
+    */
+  it should "drop elements that match the predicate form the list" in {
+    val lists = Table(
+      ("p", "source", "target"),
+      ((i: Int) => i % 2 == 0, List(1,2,3), List(1,3)))
+
+    forAll(lists){(p: Int => Boolean, s: List[Int], t: List[Int]) =>
+      dropWhile(p, s) shouldBe t
+    }
+  }
 }

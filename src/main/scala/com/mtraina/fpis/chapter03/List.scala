@@ -58,4 +58,19 @@ object List {
     if(n <= 0) l
     else drop(n - 1, tail(l))
   }
+
+  /**
+    * Ex. 3.5
+    */
+  def dropWhile[A](p: A => Boolean, l: List[A]): List[A] = {
+
+    def inner(p: A => Boolean, l: List[A], r: List[A]): List[A] = {
+      r match {
+        case Nil => l
+        case Cons(h, t) => if(!p(h)) inner(p, Cons(h, l), t) else inner(p, l, t)
+      }
+    }
+
+    inner(p, Nil, l)
+  }
 }
