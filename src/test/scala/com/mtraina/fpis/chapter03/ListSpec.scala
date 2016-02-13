@@ -19,6 +19,18 @@ class ListSpec extends FlatSpec with Matchers {
     }
   }
 
+  it should "multiply all the element of the list" in {
+    val lists = Table(
+      ("source", "result"),
+      (List(2d,3d,4d), 24d),
+      (List(1d), 1d))
+
+    forAll(lists){(s: List[Double], r: Double) =>
+      product(s) shouldBe r
+      product2(s) shouldBe r
+    }
+  }
+
   /**
     * Ex. 3.1
     */
