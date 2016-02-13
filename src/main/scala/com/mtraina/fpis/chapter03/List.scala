@@ -62,12 +62,18 @@ object List {
   /**
     * Ex. 3.5
     */
-  def dropWhile[A](p: A => Boolean, l: List[A]): List[A] = {
+  def dropWhile[A](l: List[A], p: A => Boolean): List[A] = {
     l match {
       case Nil => l
-      case Cons(h,t) => if(!p(h)) Cons(h, dropWhile(p, t)) else dropWhile(p, t)
+      case Cons(h,t) => if(!p(h)) Cons(h, dropWhile(t, p)) else dropWhile(t, p)
     }
   }
+
+  def dropWhile2[A](as: List[A])(f: A => Boolean): List[A] =
+    as match {
+      case Cons(h, t) if f(h) => dropWhile2(t)(f)
+      case _ => as
+    }
 
   /**
     * Ex. 3.6
