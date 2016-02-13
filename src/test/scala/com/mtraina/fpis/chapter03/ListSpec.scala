@@ -6,6 +6,19 @@ import org.scalatest.prop.TableDrivenPropertyChecks._
 
 class ListSpec extends FlatSpec with Matchers {
 
+  it should "sum all the element of the list" in {
+    val lists = Table(
+      ("source", "result"),
+      (List(1,2,3), 6),
+      (Nil, 0),
+      (List(1), 1))
+
+    forAll(lists){(s: List[Int], r: Int) =>
+      sum(s) shouldBe r
+      sum2(s) shouldBe r
+    }
+  }
+
   /**
     * Ex. 3.1
     */
