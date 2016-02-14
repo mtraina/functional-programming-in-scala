@@ -119,4 +119,11 @@ class ListSpec extends FlatSpec with Matchers {
       init(s) shouldBe t
     }
   }
+
+  /**
+    * Ex. 3.8
+    */
+  it should "recreate the same input list" in {
+    foldRight(List(1,2,3), Nil: List[Int])(Cons(_,_)) shouldBe List(1,2,3)
+  }
 }
