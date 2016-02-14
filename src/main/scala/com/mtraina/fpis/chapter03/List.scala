@@ -5,6 +5,7 @@ case object Nil extends List[Nothing]
 case class Cons[+A](head: A, tail: List[A]) extends List[A]
 
 object List {
+
   def sum(ints: List[Int]): Int = ints match {
     case Nil => 0
     case Cons(x, xs) => x + sum(xs)
@@ -122,4 +123,10 @@ object List {
       case Cons(h,t) => foldLeft(t, f(z, h))(f)
     }
   }
+
+  /**
+    * Ex. 3.11
+    */
+  def sum3(is: List[Int]): Int = foldLeft(is, 0)(_ + _)
+  def product3(ds: List[Double]): Double = foldLeft(ds, 1.0)(_ * _)
 }

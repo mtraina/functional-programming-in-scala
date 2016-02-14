@@ -16,6 +16,7 @@ class ListSpec extends FlatSpec with Matchers {
     forAll(lists){(s: List[Int], r: Int) =>
       sum(s) shouldBe r
       sum2(s) shouldBe r
+      sum3(s) shouldBe r
     }
   }
 
@@ -28,6 +29,7 @@ class ListSpec extends FlatSpec with Matchers {
     forAll(lists){(s: List[Double], r: Double) =>
       product(s) shouldBe r
       product2(s) shouldBe r
+      product3(s) shouldBe r
     }
   }
 
