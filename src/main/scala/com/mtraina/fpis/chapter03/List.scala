@@ -92,7 +92,7 @@ object List {
       case Cons(x, xs) => f(x, foldRight(xs, z)(f))
     }
 
-  def sum2(ns: List[Int]) = foldRight(ns, 0)((x, y)=> x + y)
+  def sum2(ns: List[Int]) = foldRight(ns, 0)((x, y) => x + y)
 
   def product2(ns: List[Double]) = foldRight(ns, 1.0)(_ * _)
 
@@ -106,7 +106,12 @@ object List {
   /**
     * Ex. 3.8
     */
-  def sumLists[A](a: List[A], b: List[A]): List[A] = {
-    foldRight(a, b)(Cons(_ , _))
+  def sumLists[A](a: List[A], b: List[A]): List[A] = foldRight(a, b)(Cons(_ , _))
+
+  /**
+    * Ex. 3.9
+    */
+  def length[A](l: List[A]): Int = {
+    foldRight(l, 0)((x, y) => y + 1)
   }
 }

@@ -127,4 +127,19 @@ class ListSpec extends FlatSpec with Matchers {
     sumLists(List(1,2,3), Nil: List[Int]) shouldBe List(1,2,3)
     sumLists(List(1,2,3), List(4,5)) shouldBe List(1,2,3,4,5)
   }
+
+  /**
+    * Ex. 3.9
+    */
+  it should "compute the length of a list" in {
+    val lists = Table(
+      ("list", "length"),
+      (List(1,2,3), 3),
+      (Nil, 0),
+      (List(1), 1))
+
+    forAll(lists){(s: List[Int], l: Int) =>
+      com.mtraina.fpis.chapter03.List.length(s) shouldBe l
+    }
+  }
 }
