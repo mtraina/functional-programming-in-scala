@@ -103,4 +103,10 @@ object List {
     * evaluate foldRight again for each element of the list.
     */
 
+  /**
+    * Ex. 3.8
+    */
+  def sumLists[A](a: List[A], b: List[A]): List[A] = {
+    foldRight(a, b)(Cons(_ , _))
+  }
 }

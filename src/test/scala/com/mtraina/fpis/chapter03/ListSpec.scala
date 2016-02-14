@@ -123,7 +123,8 @@ class ListSpec extends FlatSpec with Matchers {
   /**
     * Ex. 3.8
     */
-  it should "recreate the same input list" in {
-    foldRight(List(1,2,3), Nil: List[Int])(Cons(_,_)) shouldBe List(1,2,3)
+  it should "append the second list to the first one" in {
+    sumLists(List(1,2,3), Nil: List[Int]) shouldBe List(1,2,3)
+    sumLists(List(1,2,3), List(4,5)) shouldBe List(1,2,3,4,5)
   }
 }
