@@ -152,6 +152,7 @@ class ListSpec extends FlatSpec with Matchers {
     val lists = Table(
       ("source", "target"),
       (List(1,2,3), List(3,2,1)),
+      (List(9,8,7,6,5,4,3,2,1), List(1,2,3,4,5,6,7,8,9)),
       (Nil, Nil),
       (List(1), List(1)))
 

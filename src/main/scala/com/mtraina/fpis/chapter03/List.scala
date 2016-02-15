@@ -134,7 +134,6 @@ object List {
     * Ex. 3.12
     */
   def reverse[A](l: List[A]): List[A] = {
-    val r: List[A] = Nil
-    foldLeft(l, r)((x, y) => Cons(y, x))
+    foldLeft(l, Nil: List[A])((x, y) => Cons(y, x))
   }
 }
