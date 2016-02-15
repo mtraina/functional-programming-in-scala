@@ -134,9 +134,7 @@ object List {
     * Ex. 3.12
     */
   def reverse[A](l: List[A]): List[A] = {
-    l match {
-      case Nil => l
-      case Cons(h,t) =>
-    }
+    val r: List[A] = Nil
+    foldLeft(l, r)((x, y) => Cons(y, x))
   }
 }
