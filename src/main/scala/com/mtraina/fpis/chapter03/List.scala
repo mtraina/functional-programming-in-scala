@@ -129,4 +129,14 @@ object List {
     */
   def sum3(is: List[Int]): Int = foldLeft(is, 0)(_ + _)
   def product3(ds: List[Double]): Double = foldLeft(ds, 1.0)(_ * _)
+
+  /**
+    * Ex. 3.12
+    */
+  def reverse[A](l: List[A]): List[A] = {
+    l match {
+      case Nil => l
+      case Cons(h,t) =>
+    }
+  }
 }

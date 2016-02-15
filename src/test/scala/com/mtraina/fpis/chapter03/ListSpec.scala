@@ -144,4 +144,19 @@ class ListSpec extends FlatSpec with Matchers {
       com.mtraina.fpis.chapter03.List.length(s) shouldBe l
     }
   }
+
+  /**
+    * Ex. 3.12
+    */
+  it should "reverse a list" in {
+    val lists = Table(
+      ("source", "target"),
+      (List(1,2,3), List(3,2,1)),
+      (Nil, Nil),
+      (List(1), List(1)))
+
+    forAll(lists){(s: List[Int], t: List[Int]) =>
+      reverse(s) shouldBe t
+    }
+  }
 }
