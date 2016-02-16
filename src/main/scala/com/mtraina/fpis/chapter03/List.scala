@@ -1,5 +1,7 @@
 package com.mtraina.fpis.chapter03
 
+import scala.annotation.tailrec
+
 sealed trait List[+A]
 case object Nil extends List[Nothing]
 case class Cons[+A](head: A, tail: List[A]) extends List[A]
@@ -105,7 +107,7 @@ object List {
     */
 
   /**
-    * Ex. 3.8
+    * Ex. 3.8 and Ex. 3.14
     */
   def sumLists[A](a: List[A], b: List[A]): List[A] = foldRight(a, b)(Cons(_ , _))
 
@@ -117,6 +119,7 @@ object List {
   /**
     * Ex. 3.10
     */
+  @tailrec
   def foldLeft[A,B](as: List[A], z: B)(f: (B,A) => B): B = {
     as match {
       case Nil => z
