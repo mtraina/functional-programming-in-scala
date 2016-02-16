@@ -171,4 +171,5 @@ object List {
     * Ex. 3.20
     */
   def flatMap[A,B](as: List[A])(f: A => List[B]): List[B] = foldRight(as, Nil: List[B])((x,y) => append(f(x), y))
+  def flatMap1[A,B](as: List[A])(f: A => List[B]): List[B] = concat(map(as)(f))
 }

@@ -226,5 +226,6 @@ class ListSpec extends FlatSpec with Matchers {
     */
   it should "flat the mapped elements of the list" in {
     flatMap(List(1,2,3))(i => List(i,i)) shouldBe List(1,1,2,2,3,3)
+    flatMap1(List(1,2,3))(i => List(i,i)) shouldBe List(1,1,2,2,3,3)
   }
 }
