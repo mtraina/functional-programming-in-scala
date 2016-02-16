@@ -171,7 +171,7 @@ class ListSpec extends FlatSpec with Matchers {
     )
 
     forAll(lists){(s: List[List[Int]], t: List[Int]) =>
-      concatenate(s) shouldBe t
+      concat(s) shouldBe t
     }
   }
 
@@ -219,5 +219,12 @@ class ListSpec extends FlatSpec with Matchers {
     */
   it should "filter the list" in {
     filter(List(1,2,3,4,5,6,7,8,9,10))((i: Int) => i % 2 == 0) shouldBe List(2,4,6,8,10)
+  }
+
+  /**
+    * Ex. 3.20
+    */
+  it should "flat the mapped elements of the list" in {
+    flatMap(List(1,2,3))(i => List(i,i)) shouldBe List(1,1,2,2,3,3)
   }
 }

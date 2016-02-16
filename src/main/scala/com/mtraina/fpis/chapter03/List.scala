@@ -141,7 +141,7 @@ object List {
   /**
     * Ex. 3.15
     */
-  def concatenate[A](l: List[List[A]]): List[A] = {
+  def concat[A](l: List[List[A]]): List[A] = {
     foldRight(l, Nil: List[A])(append)
   }
 
@@ -166,4 +166,9 @@ object List {
   def filter[A](as: List[A])(f: A => Boolean): List[A] = {
     foldRight(as, Nil: List[A])((x,y) => if (f(x)) Cons(x, y) else y)
   }
+
+  /**
+    * Ex. 3.20
+    */
+  def flatMap[A,B](as: List[A])(f: A => List[B]): List[B] = foldRight(as, Nil: List[B])((x,y) => append(f(x), y))
 }
