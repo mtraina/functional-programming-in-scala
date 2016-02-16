@@ -144,4 +144,9 @@ object List {
   def concatenate[A](l: List[List[A]]): List[A] = {
     foldRight(l, Nil: List[A])(append)
   }
+
+  /**
+    * Ex. 3.16
+    */
+  def add1(is: List[Int]): List[Int] = foldRight(is, Nil: List[Int])((x, y) => Cons(x + 1, y))
 }

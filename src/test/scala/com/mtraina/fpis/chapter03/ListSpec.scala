@@ -174,4 +174,20 @@ class ListSpec extends FlatSpec with Matchers {
       concatenate(s) shouldBe t
     }
   }
+
+  /**
+    * Ex. 3.16
+    */
+  it should "add one to each element of the list" in {
+    val lists = Table(
+      ("source", "target"),
+      (List(1,2,3), List(2,3,4)),
+      (List(9,8,7,6,5,4,3,2,1), List(10,9,8,7,6,5,4,3,2)),
+      (Nil, Nil),
+      (List(1), List(2)))
+
+    forAll(lists){(s: List[Int], t: List[Int]) =>
+      add1(s) shouldBe t
+    }
+  }
 }
