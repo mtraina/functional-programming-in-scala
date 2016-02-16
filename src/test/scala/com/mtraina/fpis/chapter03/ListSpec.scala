@@ -190,4 +190,19 @@ class ListSpec extends FlatSpec with Matchers {
       add1(s) shouldBe t
     }
   }
+
+  /**
+    * Ex. 3.17
+    */
+  it should "convert every double in the list to a string element" in {
+    val lists = Table(
+      ("source", "target"),
+      (List(1d,2d,3d), List("1.0","2.0","3.0")),
+      (Nil, Nil),
+      (List(1d), List("1.0")))
+
+    forAll(lists){(s: List[Double], t: List[String]) =>
+      doubleToString(s) shouldBe t
+    }
+  }
 }

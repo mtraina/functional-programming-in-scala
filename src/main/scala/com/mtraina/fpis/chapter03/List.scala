@@ -149,4 +149,9 @@ object List {
     * Ex. 3.16
     */
   def add1(is: List[Int]): List[Int] = foldRight(is, Nil: List[Int])((x, y) => Cons(x + 1, y))
+
+  /**
+    * Ex. 3.17
+    */
+  def doubleToString(ds: List[Double]): List[String] = foldRight(ds, Nil: List[String])((x, y) => Cons(x.toString, y))
 }
