@@ -205,4 +205,12 @@ class ListSpec extends FlatSpec with Matchers {
       doubleToString(s) shouldBe t
     }
   }
+
+  /**
+    * Ex. 3.18
+    */
+  it should "map the elements of the list according to the transformation function" in {
+    map(List(1,2,3))((i: Int) => i -1) shouldBe List(0,1,2)
+    map(List("1","2","3"))((i: String) => i.toInt) shouldBe List(1,2,3)
+  }
 }

@@ -154,4 +154,9 @@ object List {
     * Ex. 3.17
     */
   def doubleToString(ds: List[Double]): List[String] = foldRight(ds, Nil: List[String])((x, y) => Cons(x.toString, y))
+
+  /**
+    * Ex. 3.18
+    */
+  def map[A,B](as: List[A])(f: A => B): List[B] = foldRight(as, Nil: List[B])((x,y) => Cons(f(x), y))
 }
