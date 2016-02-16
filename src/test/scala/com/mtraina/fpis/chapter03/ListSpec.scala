@@ -126,8 +126,8 @@ class ListSpec extends FlatSpec with Matchers {
     * Ex. 3.8
     */
   it should "append the second list to the first one" in {
-    sumLists(List(1,2,3), Nil: List[Int]) shouldBe List(1,2,3)
-    sumLists(List(1,2,3), List(4,5)) shouldBe List(1,2,3,4,5)
+    append(List(1,2,3), Nil: List[Int]) shouldBe List(1,2,3)
+    append(List(1,2,3), List(4,5)) shouldBe List(1,2,3,4,5)
   }
 
   /**
@@ -169,9 +169,6 @@ class ListSpec extends FlatSpec with Matchers {
       ("source", "target"),
       (List(List(1,2,3),List(3,2,1)), List(1,2,3,3,2,1))
     )
-//      (List(9,8,7,6,5,4,3,2,1), List(1,2,3,4,5,6,7,8,9)),
-//      (Nil, Nil),
-//      (List(1), List(1)))
 
     forAll(lists){(s: List[List[Int]], t: List[Int]) =>
       concatenate(s) shouldBe t

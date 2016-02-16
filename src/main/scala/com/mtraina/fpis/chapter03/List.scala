@@ -109,7 +109,7 @@ object List {
   /**
     * Ex. 3.8 and Ex. 3.14
     */
-  def sumLists[A](a: List[A], b: List[A]): List[A] = foldRight(a, b)(Cons(_ , _))
+  def append[A](a: List[A], b: List[A]): List[A] = foldRight(a, b)(Cons(_ , _))
 
   /**
     * Ex. 3.9
@@ -141,5 +141,7 @@ object List {
   /**
     * Ex. 3.15
     */
-  def concatenate[A](l: List[List[A]]): List[A] = ???
+  def concatenate[A](l: List[List[A]]): List[A] = {
+    foldRight(l, Nil: List[A])(append)
+  }
 }
