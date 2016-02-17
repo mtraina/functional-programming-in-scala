@@ -237,4 +237,12 @@ class ListSpec extends FlatSpec with Matchers {
   it should "create a list adding the elements of two lists" in {
     addPairwise(List(1,2,3), List(4,5,6)) shouldBe List(5,7,9)
   }
+
+  /**
+    * Ex. 3.23
+    */
+  it should "zip the lists according to the given function" in {
+    zipWith(List(1,2,3), List(4,5,6))(_ + _) shouldBe List(5,7,9)
+    zipWith(List("a","b","c"), List("z","y","x"))(_ + _) shouldBe List("az","by","cx")
+  }
 }
