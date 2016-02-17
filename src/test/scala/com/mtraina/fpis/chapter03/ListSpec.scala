@@ -219,6 +219,7 @@ class ListSpec extends FlatSpec with Matchers {
     */
   it should "filter the list" in {
     filter(List(1,2,3,4,5,6,7,8,9,10))((i: Int) => i % 2 == 0) shouldBe List(2,4,6,8,10)
+    filter1(List(1,2,3,4,5,6,7,8,9,10))((i: Int) => i % 2 == 0) shouldBe List(2,4,6,8,10)
   }
 
   /**
