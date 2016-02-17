@@ -216,6 +216,7 @@ class ListSpec extends FlatSpec with Matchers {
 
   /**
     * Ex. 3.19
+    * Ex. 3.21
     */
   it should "filter the list" in {
     filter(List(1,2,3,4,5,6,7,8,9,10))((i: Int) => i % 2 == 0) shouldBe List(2,4,6,8,10)
@@ -228,5 +229,12 @@ class ListSpec extends FlatSpec with Matchers {
   it should "flat the mapped elements of the list" in {
     flatMap(List(1,2,3))(i => List(i,i)) shouldBe List(1,1,2,2,3,3)
     flatMap1(List(1,2,3))(i => List(i,i)) shouldBe List(1,1,2,2,3,3)
+  }
+
+  /**
+    * Ex. 3.22
+    */
+  it should "create a list adding the elements of two lists" in {
+    addPairwise(List(1,2,3), List(4,5,6)) shouldBe List(5,7,9)
   }
 }
