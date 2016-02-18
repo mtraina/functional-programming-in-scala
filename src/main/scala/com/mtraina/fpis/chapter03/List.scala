@@ -203,6 +203,7 @@ object List {
   /**
     * Ex. 3.24
     */
+  @tailrec
   def startsWith[A](l: List[A], prefix: List[A]): Boolean = {
     (l, prefix) match {
       case (_, Nil) => true
@@ -211,6 +212,7 @@ object List {
     }
   }
 
+  @tailrec
   def hasSubsequence[A](sup: List[A], sub: List[A]): Boolean = {
     sup match {
       case Nil => sub == Nil
