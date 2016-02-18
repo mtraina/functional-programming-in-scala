@@ -5,7 +5,6 @@ case class Leaf[A](value: A) extends Tree[A]
 case class Branch[A](left: Tree[A], right: Tree[A]) extends Tree[A]
 
 object Tree {
-
   /**
     * Ex. 3.25
     */
@@ -13,6 +12,25 @@ object Tree {
     t match {
       case Leaf(v) => 1
       case Branch(l,r) => treeSize(l) + treeSize(r)
+    }
+  }
+
+  /**
+    * Ex. 3.26
+    */
+  def maximum(t: Tree[Int]): Int = {
+    def helper(maxl: Int, maxR: Int) = if(maxl > maxR) maxl else maxR
+
+    t match {
+      case Leaf(v) => v
+      case Branch(l,r) => helper(maximum(l), maximum(r))
+    }
+  }
+
+  def maximum1(t: Tree[Int]): Int = {
+    t match {
+      case Leaf(v) => v
+      case Branch(l,r) => maximum(l) max maximum(r)
     }
   }
 }

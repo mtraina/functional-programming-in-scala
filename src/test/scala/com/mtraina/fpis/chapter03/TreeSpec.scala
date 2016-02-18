@@ -13,4 +13,16 @@ class TreeSpec extends FlatSpec with Matchers {
     treeSize(Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Leaf(1)))))) shouldBe 5
   }
 
+  /**
+    * Ex. 3.26
+    */
+  it should "calculate the maximum element of the tree" in {
+    maximum(Leaf(1)) shouldBe 1
+    maximum(Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(10), Leaf(1)))))) shouldBe 10
+    maximum(Branch(Leaf(20), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(10), Leaf(1)))))) shouldBe 20
+
+    maximum1(Leaf(1)) shouldBe 1
+    maximum1(Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(10), Leaf(1)))))) shouldBe 10
+    maximum1(Branch(Leaf(20), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(10), Leaf(1)))))) shouldBe 20
+  }
 }
