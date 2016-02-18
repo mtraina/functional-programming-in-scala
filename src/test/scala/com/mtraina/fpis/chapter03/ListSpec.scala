@@ -257,7 +257,11 @@ class ListSpec extends FlatSpec with Matchers {
     startsWith(Nil, List(1)) shouldBe false
   }
 
-//  it should "check if a list is a sublist of another" in {
-//    hasSubsequence(List(1), List(1)) shouldBe true
-//  }
+  it should "check if a list is a sublist of another" in {
+    hasSubsequence(List(1), List(1)) shouldBe true
+    hasSubsequence(List(1,2,3), List(3)) shouldBe true
+    hasSubsequence(List(1,2), List(3)) shouldBe false
+    hasSubsequence(List(1,2,3), List(1,2,3)) shouldBe true
+    hasSubsequence(List(1,2,3), List(1,2,3,4)) shouldBe false
+  }
 }
