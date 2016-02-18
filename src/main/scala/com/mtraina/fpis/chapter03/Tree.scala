@@ -9,10 +9,10 @@ object Tree {
   /**
     * Ex. 3.25
     */
-  def size[A](t: Tree[A]): Int = {
+  def treeSize[A](t: Tree[A]): Int = {
     t match {
       case Leaf(v) => 1
-      case Branch(l,r) => size(l) + size(r)
+      case Branch(l,r) => treeSize(l) + treeSize(r)
     }
   }
 }
