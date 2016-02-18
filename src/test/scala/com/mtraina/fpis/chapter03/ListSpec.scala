@@ -245,4 +245,19 @@ class ListSpec extends FlatSpec with Matchers {
     zipWith(List(1,2,3), List(4,5,6))(_ + _) shouldBe List(5,7,9)
     zipWith(List("a","b","c"), List("z","y","x"))(_ + _) shouldBe List("az","by","cx")
   }
+
+  /**
+    * Ex. 3.24
+    */
+  it should "check if a list is prefixed by another" in {
+    startsWith(List(1,2,3), List(1,2)) shouldBe true
+    startsWith(List(1,2,3), List(1)) shouldBe true
+    startsWith(List(1), List(1,2)) shouldBe false
+    startsWith(List(1), Nil) shouldBe true
+    startsWith(Nil, List(1)) shouldBe false
+  }
+
+//  it should "check if a list is a sublist of another" in {
+//    hasSubsequence(List(1), List(1)) shouldBe true
+//  }
 }
