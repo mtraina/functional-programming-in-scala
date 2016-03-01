@@ -43,4 +43,13 @@ class TreeSpec extends FlatSpec with Matchers {
         )
       ), Leaf(2))) shouldBe 6
   }
+
+  /**
+    * Ex. 3.28
+    */
+  it should "map each element of the tree" in {
+    map(Leaf(1))(x => x * 2) shouldBe Leaf(2)
+    map(Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(10), Leaf(1))))))(x => x + 3) shouldBe
+      Branch(Leaf(4), Branch(Leaf(4), Branch(Leaf(4), Branch(Leaf(13), Leaf(4)))))
+  }
 }
