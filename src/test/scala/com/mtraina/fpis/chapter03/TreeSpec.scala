@@ -25,4 +25,22 @@ class TreeSpec extends FlatSpec with Matchers {
     maximum1(Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(10), Leaf(1)))))) shouldBe 10
     maximum1(Branch(Leaf(20), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(10), Leaf(1)))))) shouldBe 20
   }
+
+  /**
+    * Ex. 3.27
+    */
+  it should "calculate the max depth of the tree" in {
+    depth(Leaf(1)) shouldBe 0
+    depth(Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(10), Leaf(1)))))) shouldBe 4
+    depth(Branch(
+      Branch(Leaf(1),
+        Branch(Leaf(1),
+          Branch(Leaf(10),
+            Branch(Leaf(1),
+              Branch(Leaf(1), Leaf(1))
+            )
+          )
+        )
+      ), Leaf(2))) shouldBe 6
+  }
 }
