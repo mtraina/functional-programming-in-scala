@@ -11,8 +11,12 @@ object Tree {
   def treeSize[A](t: Tree[A]): Int = {
     t match {
       case Leaf(v) => 1
-      case Branch(l,r) => treeSize(l) + treeSize(r)
+      case Branch(l,r) => 1 + treeSize(l) + treeSize(r)
     }
+  }
+
+  def treeSize1[A](t: Tree[A]): Int = {
+    fold(t)(i => 1)((i: Int, j: Int) => 1 + i + j)
   }
 
   /**
