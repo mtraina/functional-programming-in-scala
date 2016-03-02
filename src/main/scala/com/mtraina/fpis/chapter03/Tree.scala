@@ -37,7 +37,7 @@ object Tree {
   /**
     * Ex. 3.27
     */
-  def depth(t: Tree[Int]): Int = {
+  def depth[A](t: Tree[A]): Int = {
     t match {
       case Leaf(_) => 0
       case Branch(l,r) => 1 + (depth(l) max depth(r))
@@ -47,10 +47,11 @@ object Tree {
   /**
     * Ex. 3.28
     */
-  def map(t: Tree[Int])(f: Int => Int): Tree[Int] = {
+  def map[A](t: Tree[A])(f: A => A): Tree[A] = {
     t match {
       case Leaf(v) => Leaf(f(v))
       case Branch(l,r) => Branch(map(l)(f), map(r)(f))
     }
   }
+
 }
