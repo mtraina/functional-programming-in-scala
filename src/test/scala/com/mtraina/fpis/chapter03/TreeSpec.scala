@@ -84,5 +84,13 @@ class TreeSpec extends FlatSpec with Matchers {
     map(Leaf(1))(x => x * 2) shouldBe Leaf(2)
     map(Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(10), Leaf(1))))))(x => x + 3) shouldBe
       Branch(Leaf(4), Branch(Leaf(4), Branch(Leaf(4), Branch(Leaf(13), Leaf(4)))))
+
+    map1(Leaf(1))(x => x * 2) shouldBe Leaf(2)
+    map1(Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(10), Leaf(1))))))(x => x + 3) shouldBe
+      Branch(Leaf(4), Branch(Leaf(4), Branch(Leaf(4), Branch(Leaf(13), Leaf(4)))))
+
+    map2(Leaf(1))(x => x * 2) shouldBe Leaf(2)
+    map2(Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(10), Leaf(1))))))(x => x + 3) shouldBe
+      Branch(Leaf(4), Branch(Leaf(4), Branch(Leaf(4), Branch(Leaf(13), Leaf(4)))))
   }
 }

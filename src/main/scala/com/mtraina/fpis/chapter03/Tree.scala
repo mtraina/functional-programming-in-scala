@@ -74,6 +74,14 @@ object Tree {
     }
   }
 
+  def map1[A](t: Tree[A])(f: A => A): Tree[A] = {
+    fold(t)(a => Leaf(f(a)): Tree[A])((i, j) => Branch(i, j))
+  }
+
+  def map2[A](t: Tree[A])(f: A => A): Tree[A] = {
+    fold(t)(a => Leaf(f(a)): Tree[A])(Branch(_, _))
+  }
+
   def fold[A,B](t: Tree[A])(f: A => B)(g: (B,B) => B): B = {
     t match {
       case Leaf(v) => f(v)
