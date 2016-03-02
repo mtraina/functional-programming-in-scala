@@ -19,6 +19,10 @@ object Tree {
     fold(t)(i => 1)((i: Int, j: Int) => 1 + i + j)
   }
 
+  def treeSize2[A](t: Tree[A]): Int = {
+    fold(t)(i => 1)(1 + _ + _)
+  }
+
   /**
     * Ex. 3.26
     */

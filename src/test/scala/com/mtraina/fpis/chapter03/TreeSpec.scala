@@ -12,9 +12,15 @@ class TreeSpec extends FlatSpec with Matchers {
     size(treeSize)(Branch(Leaf(1), Leaf(2))) shouldBe 3
     size(treeSize)(Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Leaf(1)))))) shouldBe 9
 
+    // first refactoring, using fold
     size(treeSize1)(Leaf(2)) shouldBe 1
     size(treeSize1)(Branch(Leaf(1), Leaf(2))) shouldBe 3
     size(treeSize1)(Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Leaf(1)))))) shouldBe 9
+
+    // second refactoring, even less code in the definition of the accumulator function
+    size(treeSize2)(Leaf(2)) shouldBe 1
+    size(treeSize2)(Branch(Leaf(1), Leaf(2))) shouldBe 3
+    size(treeSize2)(Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Leaf(1)))))) shouldBe 9
 
     def size[A](f: Tree[A] => Int)(t: Tree[A]): Int = f(t)
   }
