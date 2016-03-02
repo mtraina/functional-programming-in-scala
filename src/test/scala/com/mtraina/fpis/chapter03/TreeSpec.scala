@@ -36,6 +36,14 @@ class TreeSpec extends FlatSpec with Matchers {
     maximum1(Leaf(1)) shouldBe 1
     maximum1(Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(10), Leaf(1)))))) shouldBe 10
     maximum1(Branch(Leaf(20), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(10), Leaf(1)))))) shouldBe 20
+
+    maximum2(Leaf(1)) shouldBe 1
+    maximum2(Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(10), Leaf(1)))))) shouldBe 10
+    maximum2(Branch(Leaf(20), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(10), Leaf(1)))))) shouldBe 20
+
+    maximum3(Leaf(1)) shouldBe 1
+    maximum3(Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(10), Leaf(1)))))) shouldBe 10
+    maximum3(Branch(Leaf(20), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(10), Leaf(1)))))) shouldBe 20
   }
 
   /**

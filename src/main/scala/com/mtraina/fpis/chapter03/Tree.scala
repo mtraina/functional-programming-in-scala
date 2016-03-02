@@ -42,6 +42,14 @@ object Tree {
     }
   }
 
+  def maximum2(t: Tree[Int]): Int = {
+    fold(t)(i => i)((i: Int, j: Int) => i max j)
+  }
+
+  def maximum3(t: Tree[Int]): Int = {
+    fold(t)(i => i)(_ max _)
+  }
+
   /**
     * Ex. 3.27
     */
