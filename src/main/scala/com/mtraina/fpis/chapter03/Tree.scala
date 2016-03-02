@@ -60,6 +60,10 @@ object Tree {
     }
   }
 
+  def depth1[A](t: Tree[A]): Int = {
+    fold(t)(a => 0)((i, j) => 1 + (i max j))
+  }
+
   /**
     * Ex. 3.28
     */

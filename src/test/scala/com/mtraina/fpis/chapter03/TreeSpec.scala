@@ -62,6 +62,19 @@ class TreeSpec extends FlatSpec with Matchers {
           )
         )
       ), Leaf(2))) shouldBe 6
+
+    depth1(Leaf(1)) shouldBe 0
+    depth1(Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(1), Branch(Leaf(10), Leaf(1)))))) shouldBe 4
+    depth1(Branch(
+      Branch(Leaf(1),
+        Branch(Leaf(1),
+          Branch(Leaf(10),
+            Branch(Leaf(1),
+              Branch(Leaf(1), Leaf(1))
+            )
+          )
+        )
+      ), Leaf(2))) shouldBe 6
   }
 
   /**
