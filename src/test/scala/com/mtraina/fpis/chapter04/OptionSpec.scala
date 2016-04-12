@@ -12,11 +12,15 @@ class OptionSpec extends FlatSpec with Matchers {
     Some(5) map(x => x * 2) shouldBe Some(10)
   }
 
-  "An Option" should "flat map" in {
-
+  it should "flat map to None when is None" in {
+    None.flatMap((x: Int) => Some(x + 10)) shouldBe None
   }
 
-  "An Option" should "return the default value when is None" in {
+  it should "flat map to a Some of the applied function when it is a Some" in {
+    Some(3).flatMap((x: Int) => Some(x + 10)) shouldBe Some(13)
+  }
+
+  it should "return the default value when is None" in {
     None.getOrElse(1) shouldBe 1
   }
 
