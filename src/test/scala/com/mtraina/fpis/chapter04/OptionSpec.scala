@@ -35,4 +35,16 @@ class OptionSpec extends FlatSpec with Matchers {
   it should "return the first option when is Some" in {
     Some(5).orElse(Some(10)) shouldBe Some(5)
   }
+
+  it should "return None when filtering None" in {
+    None.filter((x: Int) => x % 2 == 0) shouldBe None
+  }
+
+  it should "return None when is Some but the filter is not satisfied" in {
+    Some(1).filter((x: Int) => x % 2 == 0) shouldBe None
+  }
+
+  it should "return itself when is a Some and it satisfies the filter" in {
+    Some(4).filter((x: Int) => x % 2 == 0) shouldBe Some(4)
+  }
 }
