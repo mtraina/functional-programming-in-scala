@@ -1,7 +1,11 @@
 package com.mtraina.fpis.chapter04
 
 sealed trait Option[+A] {
-  def map[B](f: A => B): Option[B] = None
+
+  def map[B](f: A => B): Option[B] = this match {
+    case None => None
+    case Some(x) => Some(f(x))
+  }
 
 //  def flatMap[B](f: A => Option[B]): Option[B]
 //  def getOrElse[B >: A](default: => B): B
