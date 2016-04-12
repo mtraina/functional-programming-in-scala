@@ -27,4 +27,12 @@ class OptionSpec extends FlatSpec with Matchers {
   it should "get value of the Option when is a Some" in {
     Some(20).getOrElse(1) shouldBe 20
   }
+
+  it should "return the second option when is None" in {
+    None.orElse(Some(10)) shouldBe Some(10)
+  }
+
+  it should "return the first option when is Some" in {
+    Some(5).orElse(Some(10)) shouldBe Some(5)
+  }
 }
