@@ -51,4 +51,10 @@ class OptionSpec extends FlatSpec with Matchers {
   it should "calculate the variance of a valid sequence" in {
     Option.variance(List(1.0, 3.0, 5.0)) shouldBe Some(8/3d)
   }
+
+  it should "return None when combining Options where at least one is None" in {
+    Option.map2(None, None)((a: Int, b: Int) => a + b) shouldBe None
+    Option.map2(None, Some(1))((a: Int, b: Int) => a + b) shouldBe None
+    Option.map2(Some(1), None)((a: Int, b: Int) => a + b) shouldBe None
+  }
 }
