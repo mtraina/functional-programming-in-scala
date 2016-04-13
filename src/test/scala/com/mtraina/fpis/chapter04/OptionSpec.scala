@@ -57,4 +57,8 @@ class OptionSpec extends FlatSpec with Matchers {
     Option.map2(None, Some(1))((a: Int, b: Int) => a + b) shouldBe None
     Option.map2(Some(1), None)((a: Int, b: Int) => a + b) shouldBe None
   }
+
+  it should "return a Some with the result of the applied function when both the Options are Some" in {
+    Option.map2(Some(1), Some(2))((a: Int, b: Int) => a + b) shouldBe Some(3)
+  }
 }
