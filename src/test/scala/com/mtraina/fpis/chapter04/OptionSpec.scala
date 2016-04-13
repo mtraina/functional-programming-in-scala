@@ -47,4 +47,8 @@ class OptionSpec extends FlatSpec with Matchers {
   it should "return itself when is a Some and it satisfies the filter" in {
     Some(4).filter((x: Int) => x % 2 == 0) shouldBe Some(4)
   }
+
+  it should "calculate the variance of a valid sequence" in {
+    Option.variance(List(1.0, 3.0, 5.0)) shouldBe Some(8/3d)
+  }
 }
