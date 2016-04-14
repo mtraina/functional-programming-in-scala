@@ -2,6 +2,8 @@ package com.mtraina.fpis.chapter04
 
 import org.scalatest.{Matchers, FlatSpec}
 
+import scala.util.Try
+
 class OptionSpec extends FlatSpec with Matchers {
 
   "An Option" should "map to None when is None" in {
@@ -67,6 +69,10 @@ class OptionSpec extends FlatSpec with Matchers {
   }
 
   it should "return an Option containing a list of elements when combining a list of Some" in {
-    Option.sequence(List(Some(1), Some(2), Some(3))) shouldBe Some(List(1 ,2 ,3))
+    Option.sequence(List(Some(1), Some(2), Some(3))) shouldBe Some(List(1,2,3))
+  }
+
+  it should "traverse the list and compose an optional list" in {
+    Option.traverse(List(Some("a"),Some("b"),Some("c")))(i => i.map(ii => ii.toUpperCase())) shouldBe Some(List("A","B","C"))
   }
 }
