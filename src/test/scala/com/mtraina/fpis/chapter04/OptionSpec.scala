@@ -72,7 +72,15 @@ class OptionSpec extends FlatSpec with Matchers {
     Option.sequence(List(Some(1), Some(2), Some(3))) shouldBe Some(List(1,2,3))
   }
 
+  it should "traverse the list and return None because there are Nones" in {
+    Option.traverse(List(Some("a"),None,Some("c")))(i => i.map(ii => ii.toUpperCase)) shouldBe None
+  }
+
   it should "traverse the list and compose an optional list" in {
-    Option.traverse(List(Some("a"),Some("b"),Some("c")))(i => i.map(ii => ii.toUpperCase())) shouldBe Some(List("A","B","C"))
+    Option.traverse(List(Some("a"),Some("b"),Some("c")))(i => i.map(ii => ii.toUpperCase)) shouldBe Some(List("A","B","C"))
+  }
+
+  it should "traverse the list of non optionals and compose an optional list" in {
+    Option.traverse(List("1","2","3"))(i => Some(Try(i.toInt).get)) shouldBe Some(List(1,2,3))
   }
 }
