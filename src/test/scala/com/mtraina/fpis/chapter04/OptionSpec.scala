@@ -61,4 +61,12 @@ class OptionSpec extends FlatSpec with Matchers {
   it should "return a Some with the result of the applied function when both the Options are Some" in {
     Option.map2(Some(1), Some(2))((a: Int, b: Int) => a + b) shouldBe Some(3)
   }
+
+  it should "return None if combining a list of options it encounters a None" in {
+    Option.sequence(List(Some(1), None)) shouldBe None
+  }
+
+  it should "return an Option containing a list of elements when combining a list of Some" in {
+    Option.sequence(List(Some(1), Some(2), Some(3))) shouldBe Some(List(1 ,2 ,3))
+  }
 }
