@@ -6,6 +6,11 @@ sealed trait Either[+E, +A] {
     case Left(e) => Left(e)
     case Right(a) => Right(f(a))
   }
+
+  def flatMap[EE >: E, B](f: A => Either[EE, B]): Either[EE, B] = this match {
+    case Left(e) => Left(e)
+    case Right(a) => f(a)
+  }
 }
 
 case class Left[+E](value: E) extends Either[E, Nothing]
