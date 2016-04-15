@@ -28,13 +28,11 @@ class EitherSpec extends FlatSpec with Matchers {
     Right(9) orElse Right(1) shouldBe Right(9)
   }
 
-  it should "return Left when combining Options where at least one is a Left" in {
-    Left("error").map2(Left("wrong"))((a: String, b: String) => a + b) shouldBe Left("error")
-    //Option.map2(None, Some(1))((a: Int, b: Int) => a + b) shouldBe None
-    //Option.map2(Some(1), None)((a: Int, b: Int) => a + b) shouldBe None
+  it should "return Left when combining Either where at least one is a Left" in {
+    val f = (a: String, b: String) => a + b
+    Left("error").map2(Left("wrong"))(f) shouldBe Left("error")
+    Left("error").map2(Right("correct"))(f) shouldBe Left("error")
+    Right("correct").map2(Left("wrong"))(f) shouldBe Left("wrong")
   }
 
-//  it should "return a Some with the result of the applied function when both the Options are Some" in {
-//    Option.map2(Some(1), Some(2))((a: Int, b: Int) => a + b) shouldBe Some(3)
-//  }
 }
