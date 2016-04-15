@@ -35,4 +35,7 @@ class EitherSpec extends FlatSpec with Matchers {
     Right("correct").map2(Left("wrong"))(f) shouldBe Left("wrong")
   }
 
+  it should "return a Right when combining two Right" in {
+    Right(2).map2(Right(3))((a: Int, b: Int) => math.pow(a, b)) shouldBe Right(8)
+  }
 }
