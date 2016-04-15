@@ -19,4 +19,12 @@ class EitherSpec extends FlatSpec with Matchers {
   it should "return a Right with the applied function when calling flatMap on it" in {
     Right("correct") flatMap((s: String) => Right(s.toUpperCase)) shouldBe Right("CORRECT")
   }
+
+  it should "return the default value when calling orElse on a Left" in {
+    Left("error") orElse Right(1) shouldBe Right(1)
+  }
+
+  it should "return itself when calling orElse on a Right" in {
+    Right(9) orElse Right(1) shouldBe Right(9)
+  }
 }
