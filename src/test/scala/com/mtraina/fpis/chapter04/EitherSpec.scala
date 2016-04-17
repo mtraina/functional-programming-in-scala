@@ -2,6 +2,8 @@ package com.mtraina.fpis.chapter04
 
 import org.scalatest.{Matchers, FlatSpec}
 
+import scala.util.Try
+
 class EitherSpec extends FlatSpec with Matchers {
 
   "An Either" should "map to Left when it's a Left" in {
@@ -37,5 +39,13 @@ class EitherSpec extends FlatSpec with Matchers {
 
   it should "return a Right when combining two Right" in {
     Right(2).map2(Right(3))((a: Int, b: Int) => math.pow(a, b)) shouldBe Right(8)
+  }
+
+  it should "traverse the list and return a Left because there are Left" in {
+    Either.traverse(List(Left("caution"), Right("true")))(i => i.map(ii => ii.toUpperCase)) shouldBe Left("caution")
+  }
+
+  it should "traverse the list and compose a list in a Right" in {
+    Either.traverse(List(Right("a"), Right("b"), Right("c")))(i => i.map(ii => ii.toUpperCase)) shouldBe Right(List("A","B","C"))
   }
 }
