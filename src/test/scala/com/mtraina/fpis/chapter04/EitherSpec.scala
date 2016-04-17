@@ -1,8 +1,6 @@
 package com.mtraina.fpis.chapter04
 
-import org.scalatest.{Matchers, FlatSpec}
-
-import scala.util.Try
+import org.scalatest.{FlatSpec, Matchers}
 
 class EitherSpec extends FlatSpec with Matchers {
 
@@ -47,5 +45,13 @@ class EitherSpec extends FlatSpec with Matchers {
 
   it should "traverse the list and compose a list in a Right" in {
     Either.traverse(List(Right("a"), Right("b"), Right("c")))(i => i.map(ii => ii.toUpperCase)) shouldBe Right(List("A","B","C"))
+  }
+
+  it should "return a Left when combining a list of Either where at least one is a Left" in {
+    Either.sequence(List(Left("warning"), Right("success"))) shouldBe Left("warning")
+  }
+
+  it should "return a Right containing the list of values when we pass a list of Right " in {
+    Either.sequence(List(Right("perfect"), Right("success"))) shouldBe Right(List("perfect", "success"))
   }
 }
