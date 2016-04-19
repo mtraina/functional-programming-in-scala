@@ -6,6 +6,11 @@ sealed trait Stream[+A] {
     case Empty => None
     case Cons(h, t) => Some(h())
   }
+
+  def toList: List[A] = this match {
+    case Empty => Nil
+    case Cons(h, t) => ???
+  }
 }
 
 case object Empty extends Stream[Nothing]
