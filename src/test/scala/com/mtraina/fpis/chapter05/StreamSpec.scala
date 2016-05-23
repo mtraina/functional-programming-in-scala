@@ -13,4 +13,9 @@ class StreamSpec extends FlatSpec with Matchers {
     cons(1, Empty).toList shouldBe List(1)
     cons(1, cons(2, cons(3, Empty))).toList shouldBe List(1,2,3)
   }
+
+  it should "return the first n elements of a Stream" in {
+    cons(1, Empty).take(1).toList shouldBe List(1)
+    cons(1, cons(2, cons(3, Empty))).take(2).toList shouldBe List(1,2)
+  }
 }

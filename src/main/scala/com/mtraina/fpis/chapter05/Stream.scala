@@ -1,5 +1,7 @@
 package com.mtraina.fpis.chapter05
 
+import Stream._
+
 sealed trait Stream[+A] {
 
   def headOption: Option[A] = this match {
@@ -13,6 +15,15 @@ sealed trait Stream[+A] {
   def toList: List[A] = this match {
     case Empty => Nil
     case Cons(h, t) => List(h()) ++ t().toList
+  }
+
+  /**
+    * Ex. 5.2
+    */
+  def take(n: Int): Stream[A] = this match {
+    case Cons(h, t) if n > 1 => cons(h(), t().take(n - 1))
+    case Cons(h, _) if n == 1 => cons(h(), empty)
+    case _ => empty
   }
 }
 
