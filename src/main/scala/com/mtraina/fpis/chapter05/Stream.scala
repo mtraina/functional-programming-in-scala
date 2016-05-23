@@ -7,6 +7,9 @@ sealed trait Stream[+A] {
     case Cons(h, t) => Some(h())
   }
 
+  /**
+    * Ex. 5.1
+    */
   def toList: List[A] = this match {
     case Empty => Nil
     case Cons(h, t) => List(h()) ++ t().toList
