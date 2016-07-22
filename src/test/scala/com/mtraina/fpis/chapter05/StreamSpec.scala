@@ -29,4 +29,13 @@ class StreamSpec extends FlatSpec with Matchers {
     cons(1, Empty).drop(1).toList shouldBe empty
     cons(1, cons(2, cons(3, Empty))).drop(2).toList shouldBe List(3)
   }
+
+  /**
+    * Ex. 5.3
+    */
+  it should "return all starting elements matching the predicate" in {
+    cons(2, cons(4, cons(1, Empty))).takeWhile(x => x % 2 == 0).toList shouldBe List(2,4)
+    cons(1, cons(2, cons(3, cons(4, cons(5, Empty))))).takeWhile(x => x < 3).toList shouldBe List(1, 2)
+    cons(1, cons(2, cons(3, cons(4, cons(5, Empty))))).takeWhile(x => x > 3).toList shouldBe List()
+  }
 }
