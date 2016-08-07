@@ -5,10 +5,21 @@ import com.mtraina.fpis.chapter05.Stream._
 
 class StreamSpec extends FlatSpec with Matchers {
 
+  "A Stream" should "return the optional head" in {
+    Empty.headOption shouldBe None
+    cons(2, cons(4, cons(1, Empty))).headOption shouldBe Some(2)
+
+    /**
+      * Ex. 5.6
+      */
+    Empty.headOption2 shouldBe None
+    cons(2, cons(4, cons(1, Empty))).headOption2 shouldBe Some(2)
+  }
+
   /**
     * Ex. 5.1
     */
-  "A Stream" should "return an empty list when converting an Empty" in {
+  it should "return an empty list when converting an Empty" in {
     Empty.toList shouldBe Nil
   }
 
@@ -58,13 +69,5 @@ class StreamSpec extends FlatSpec with Matchers {
     cons(2, cons(4, cons(1, Empty))).forAll(x => x % 2 == 0) shouldBe false
     cons(2, cons(4, cons(8, Empty))).forAll(x => x % 2 == 0) shouldBe true
     cons(2, cons(4, cons(1, Empty))).forAll(x => x > 0) shouldBe true
-  }
-
-  /**
-    * Ex. 5.6
-    */
-  it should "return the optional head" in {
-    Empty.headOption2 shouldBe None
-    cons(2, cons(4, cons(1, Empty))).headOption2 shouldBe Some(2)
   }
 }
