@@ -49,6 +49,7 @@ class StreamSpec extends FlatSpec with Matchers {
     */
   it should "check if all the elements match the predicate" in {
     cons(2, cons(4, cons(1, Empty))).forAll(x => x % 2 == 0) shouldBe false
-    cons(2, cons(4, cons(1, Empty))).exists(x => x > 0) shouldBe true
+    cons(2, cons(4, cons(8, Empty))).forAll(x => x % 2 == 0) shouldBe true
+    cons(2, cons(4, cons(1, Empty))).forAll(x => x > 0) shouldBe true
   }
 }
