@@ -37,6 +37,13 @@ class StreamSpec extends FlatSpec with Matchers {
     cons(2, cons(4, cons(1, Empty))).takeWhile(x => x % 2 == 0).toList shouldBe List(2,4)
     cons(1, cons(2, cons(3, cons(4, cons(5, Empty))))).takeWhile(x => x < 3).toList shouldBe List(1, 2)
     cons(1, cons(2, cons(3, cons(4, cons(5, Empty))))).takeWhile(x => x > 3).toList shouldBe List()
+
+    /**
+      * Ex. 5.5
+      */
+    cons(2, cons(4, cons(1, Empty))).takeWhile2(x => x % 2 == 0).toList shouldBe List(2,4)
+    cons(1, cons(2, cons(3, cons(4, cons(5, Empty))))).takeWhile2(x => x < 3).toList shouldBe List(1, 2)
+    cons(1, cons(2, cons(3, cons(4, cons(5, Empty))))).takeWhile2(x => x > 3).toList shouldBe List()
   }
 
   it should "check if an element matching the predicate exists" in {
