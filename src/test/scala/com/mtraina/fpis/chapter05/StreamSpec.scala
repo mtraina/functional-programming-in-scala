@@ -70,4 +70,13 @@ class StreamSpec extends FlatSpec with Matchers {
     cons(2, cons(4, cons(8, Empty))).forAll(x => x % 2 == 0) shouldBe true
     cons(2, cons(4, cons(1, Empty))).forAll(x => x > 0) shouldBe true
   }
+
+  /**
+    * Ex. 5.7
+    */
+  it should "implement map, filter, append and flat map using fold right" in {
+    cons(1, cons(2, cons(3, Empty))).map(x => x + 1).toList shouldBe List(2, 3, 4)
+
+
+  }
 }
