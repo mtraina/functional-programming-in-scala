@@ -83,5 +83,8 @@ class StreamSpec extends FlatSpec with Matchers {
 
     // append
     cons(1, cons(2, Empty)).append(cons(3, Empty)).toList shouldBe List(1, 2, 3)
+
+    // flat map
+    cons(3, cons(4, Empty)).flatMap(x => cons(x * 2, Empty)).toList shouldBe List(6, 8)
   }
 }
