@@ -87,4 +87,11 @@ class StreamSpec extends FlatSpec with Matchers {
     // flat map
     Stream(3, 4).flatMap(x => cons(x * 2, Empty)).toList shouldBe List(6, 8)
   }
+
+  /**
+    * Ex. 5.8
+    */
+  it should "return an infinite sequence of constants" in {
+    Stream.constant('a').take(5).toList shouldBe List('a', 'a', 'a', 'a', 'a')
+  }
 }
