@@ -75,8 +75,13 @@ class StreamSpec extends FlatSpec with Matchers {
     * Ex. 5.7
     */
   it should "implement map, filter, append and flat map using fold right" in {
+    // map
     cons(1, cons(2, cons(3, Empty))).map(x => x + 1).toList shouldBe List(2, 3, 4)
 
+    // filter
     cons(1, cons(2, cons(3, Empty))).filter(x => x % 3 == 0).toList shouldBe List(3)
+
+    // append
+    cons(1, cons(2, Empty)).append(cons(3, Empty)).toList shouldBe List(1, 2, 3)
   }
 }
