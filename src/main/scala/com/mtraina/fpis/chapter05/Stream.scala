@@ -106,4 +106,14 @@ object Stream {
     * Ex. 5.9
     */
   def from(n: Int): Stream[Int] = Stream.cons(n, from(n + 1))
+
+  /**
+    * Ex. 5.10
+    */
+  def fibs(): Stream[Int] = {
+
+    def fibsHelper(n: Int, acc: Int, sum: Int): Stream[Int] = Stream.cons(n, fibsHelper(n + acc, sum, acc + sum))
+
+    fibsHelper(0, 1, 0)
+  }
 }

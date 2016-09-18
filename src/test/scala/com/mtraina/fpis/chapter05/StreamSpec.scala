@@ -102,4 +102,11 @@ class StreamSpec extends FlatSpec with Matchers {
     Stream.from(5).take(3).toList shouldBe List(5, 6, 7)
     Stream.from(99).take(5).toList shouldBe List(99, 100, 101, 102, 103)
   }
+
+  /**
+    * Ex. 5.10
+    */
+  it should "return an infinite sequence of Fibonacci numbers" in {
+    Stream.fibs().take(7).toList shouldBe List(0, 1, 1, 2, 3, 5, 8)
+  }
 }
