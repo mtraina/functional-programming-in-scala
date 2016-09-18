@@ -94,4 +94,12 @@ class StreamSpec extends FlatSpec with Matchers {
   it should "return an infinite sequence of constants" in {
     Stream.constant('a').take(5).toList shouldBe List('a', 'a', 'a', 'a', 'a')
   }
+
+  /**
+    * Ex. 5.9
+    */
+  it should "return an infinite and incremental sequence" in {
+    Stream.from(5).take(3).toList shouldBe List(5, 6, 7)
+    Stream.from(99).take(5).toList shouldBe List(99, 100, 101, 102, 103)
+  }
 }
