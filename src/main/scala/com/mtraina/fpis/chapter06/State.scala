@@ -17,8 +17,8 @@ object RNG {
 
   def nonNegativeInt(rng: RNG): (Int, RNG) = {
     val next = rng.nextInt
-    if(next._1 == Int.MinValue) (-1 * (next._1 + 1), rng)
-    else if(next._1 < 0)(-1 * next._1, rng)
+    if(next._1 == Int.MinValue) (-1 * (next._1 + 1), next._2)
+    else if(next._1 < 0)(-1 * next._1, next._2)
     else next
   }
 

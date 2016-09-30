@@ -9,7 +9,11 @@ class StateSpec extends FlatSpec with Matchers {
     val rng = Simple(3)
     RNG.nonNegativeInt(rng) shouldBe rng.nextInt
 
-    val rng2 = Simple(Int.MinValue)
-    RNG.nonNegativeInt(rng2) shouldBe rng2.nextInt
+    val rng2 = Simple(Int.MinValue).nextInt
+    if(rng2._1 > 0){
+      RNG.nonNegativeInt(Simple(Int.MinValue)) shouldBe (rng2._1, rng2._2)
+    } else {
+      RNG.nonNegativeInt(Simple(Int.MinValue)) shouldBe (-rng2._1, rng2._2)
+    }
   }
 }
