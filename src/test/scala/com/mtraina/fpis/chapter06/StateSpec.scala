@@ -13,7 +13,7 @@ class StateSpec extends FlatSpec with Matchers {
     if(rng2._1 > 0){
       RNG.nonNegativeInt(Simple(Int.MinValue)) shouldBe (rng2._1, rng2._2)
     } else {
-      RNG.nonNegativeInt(Simple(Int.MinValue)) shouldBe (-rng2._1, rng2._2)
+      RNG.nonNegativeInt(Simple(Int.MinValue)) shouldBe (-rng2._1 - 1, rng2._2)
     }
   }
 }

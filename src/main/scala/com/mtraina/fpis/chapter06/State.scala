@@ -16,10 +16,8 @@ object RNG {
   }
 
   def nonNegativeInt(rng: RNG): (Int, RNG) = {
-    val next = rng.nextInt
-    if(next._1 == Int.MinValue) (-1 * (next._1 + 1), next._2)
-    else if(next._1 < 0)(-1 * next._1, next._2)
-    else next
+    val (i, r) = rng.nextInt
+    if(i < 0) (-i - 1, r) else (i, r)
   }
 
 }
