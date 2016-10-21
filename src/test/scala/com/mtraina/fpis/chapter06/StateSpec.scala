@@ -38,4 +38,12 @@ class StateSpec extends FlatSpec with Matchers {
     RNG.doubleInt(SimpleRNG(2)) shouldBe a [((Double, Int), RNG)]
     RNG.double3(SimpleRNG(2)) shouldBe a [((Double, Double, Double), RNG)]
   }
+
+  /**
+    * Ex. 6.4
+    */
+  it should "generate a list of ints" in {
+    RNG.ints(2)(SimpleRNG(3))._1.length shouldBe 2
+    RNG.ints(12)(SimpleRNG(100))._1.length shouldBe 12
+  }
 }
