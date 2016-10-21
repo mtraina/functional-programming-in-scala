@@ -28,4 +28,14 @@ class StateSpec extends FlatSpec with Matchers {
     val d = RNG.double(rng)
     d._1 >= 0d && d._1 < 1 shouldBe true
   }
+
+  /**
+    * Ex. 6.3
+    */
+  it should "generate a tuple" in {
+    // TODO is not checking the type of the tuple (type erasure?)
+    RNG.intDouble(SimpleRNG(2)) shouldBe a [((Int, Double), RNG)]
+    RNG.doubleInt(SimpleRNG(2)) shouldBe a [((Double, Int), RNG)]
+    RNG.double3(SimpleRNG(2)) shouldBe a [((Double, Double, Double), RNG)]
+  }
 }
