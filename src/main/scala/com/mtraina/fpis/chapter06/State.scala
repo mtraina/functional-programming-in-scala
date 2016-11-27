@@ -15,22 +15,30 @@ object RNG {
     }
   }
 
+  /**
+    * Ex. 6.1
+    */
   def nonNegativeInt(rng: RNG): (Int, RNG) = {
     val (i, r) = rng.nextInt
     if(i < 0) (-i - 1, r) else (i, r)
   }
 
+  /**
+    * Ex. 6.2
+    */
   def double(rng: RNG): (Double, RNG) = {
     val (i, r) = nonNegativeInt(rng)
     (i / (Int.MaxValue.toDouble + 1), r)
   }
 
+  /**
+    * Ex. 6.3
+    */
   def intDouble(rng: RNG): ((Int,Double), RNG) = {
     val i = rng.nextInt
     val d = double(rng)
     ((i._1, d._1), d._2)
   }
-
 
   def doubleInt(rng: RNG): ((Double,Int), RNG) = {
     val ((i, d), r) = intDouble(rng)
@@ -44,6 +52,9 @@ object RNG {
     ((d1, d2, d3), r3)
   }
 
+  /**
+    * Ex. 6.4
+    */
   def ints(count: Int)(rng: RNG): (List[Int], RNG) = {
     if(count == 0){
       (List(), rng)
@@ -68,6 +79,19 @@ object RNG {
 
   def nonNegativeEven: Rand[Int] = map(nonNegativeInt)(i => i - i % 2)
 
+  /**
+    * Ex. 6.5
+    */
   def doubleMap: Rand[Double] = map(nonNegativeInt)(i => i / (Int.MaxValue.toDouble + 1))
+
+  /**
+    * Ex. 6.6
+    */
+  def map2[A,B,C](ra: Rand[A], rb: Rand[B])(f: (A, B) => C): Rand[C] = ???
+
+  /**
+    * Ex. 6.7
+    */
+  def sequence[A](fs: List[Rand[A]]): Rand[List[A]] = ???
 
 }
