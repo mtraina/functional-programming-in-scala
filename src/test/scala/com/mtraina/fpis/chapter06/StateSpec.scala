@@ -27,6 +27,12 @@ class StateSpec extends FlatSpec with Matchers {
     val rng = SimpleRNG(1)
     val d = RNG.double(rng)
     d._1 >= 0d && d._1 < 1 shouldBe true
+
+    /**
+      * Ex. 6.5
+      */
+    val d1 = RNG.doubleMap(SimpleRNG(1))
+    d1._1 >= 0d && d1._1 < 1 shouldBe true
   }
 
   /**
@@ -46,4 +52,10 @@ class StateSpec extends FlatSpec with Matchers {
     RNG.ints(2)(SimpleRNG(3))._1.length shouldBe 2
     RNG.ints(12)(SimpleRNG(100))._1.length shouldBe 12
   }
+
+  /**
+    * Ex. 6.5
+    */
+//  it should "" in {
+//  }
 }
