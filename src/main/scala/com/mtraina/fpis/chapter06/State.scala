@@ -94,4 +94,11 @@ object RNG {
     */
   def sequence[A](fs: List[Rand[A]]): Rand[List[A]] = ???
 
+  /**
+    * Ex. 6.8
+    */
+  def flatMap[A, B](f: Rand[A])(g: A => Rand[B]): Rand[B] = rng => {
+    val (a, rng2) = f(rng)
+    g(a)(rng2)
+  }
 }

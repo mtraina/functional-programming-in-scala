@@ -1,6 +1,6 @@
 package com.mtraina.fpis.chapter06
 
-import com.mtraina.fpis.chapter06.RNG.SimpleRNG
+import com.mtraina.fpis.chapter06.RNG.{Rand, SimpleRNG}
 import org.scalatest.{FlatSpec, Matchers}
 
 class StateSpec extends FlatSpec with Matchers {
@@ -58,4 +58,14 @@ class StateSpec extends FlatSpec with Matchers {
     */
 //  it should "" in {
 //  }
+
+  /**
+    * Ex. 6.8
+    */
+  it should "create a String wrapped in a Rand starting from an Int wrapped in a Rand" in {
+    val g: RNG = SimpleRNG(1)
+    val ra: Rand[Int] = RNG.int
+    val rb: Rand[String] = RNG.flatMap(ra)(n => RNG.unit("hello"))
+    rb(g)._1 shouldEqual "hello"
+  }
 }
